@@ -1,0 +1,20 @@
+{
+    "name": "com.braveturtles.zepeto_tween",
+    "version": "0.1.0",
+    "displayName": "Zepeto Tween",
+    "description": "Tween library for Zepeto game development",
+    "unity": "2020.3",
+    "unityRelease": "9f1",
+    "documentationUrl": "https://github.com/HenryAtBraveTurtles/zepeto_tween",
+    "changelogUrl": "https://github.com/HenryAtBraveTurtles/zepeto_tween",
+    "licensesUrl": "https://github.com/HenryAtBraveTurtles/zepeto_tween/blob/main/LICENSE",
+    "keywords": [
+        "Zepeto",
+        "Tween"
+    ],
+    "author": {
+        "name": "Henry",
+        "email": "henry@braveturtles.com",
+        "url": "https://www.braveturtles.com"
+    }
+}
