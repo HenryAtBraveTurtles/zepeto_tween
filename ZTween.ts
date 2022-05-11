@@ -1,4 +1,5 @@
 import { Application, Transform, Vector3 } from "UnityEngine";
+import { ScrollRect } from "UnityEngine.UI";
 import ZTweenComponent from "./ZTweenComponent";
 import ZTweenManager from "./ZTweenManager";
 
@@ -28,9 +29,7 @@ export default class ZTween {
 
     public static TransfomMoveTo(transform: Transform, endValue: Vector3, duration: number) {
         return ZTween.To(
-            () => {
-                return transform.position;
-            },
+            () => transform.position,
             (v: Vector3) => {
                 transform.position = v;
             },
@@ -39,11 +38,27 @@ export default class ZTween {
 
     public static TransfomLocalMoveTo(transform: Transform, endValue: Vector3, duration: number) {
         return ZTween.To(
-            () => {
-                return transform.localPosition;
-            },
+            () => transform.localPosition,
             (v: Vector3) => {
                 transform.localPosition = v;
+            },
+            endValue, duration);
+    }
+
+    public static ScrollRectHorizontalNormalizedPosition(scrollRect: ScrollRect, endValue: number, duration: number) {
+        return ZTween.To(
+            () => scrollRect.horizontalNormalizedPosition,
+            (v: number) => {
+                scrollRect.horizontalNormalizedPosition = v;
+            },
+            endValue, duration);
+    }
+
+    public static ScrollRectVerticalNormalizedPosition(scrollRect: ScrollRect, endValue: number, duration: number) {
+        return ZTween.To(
+            () => scrollRect.verticalNormalizedPosition,
+            (v: number) => {
+                scrollRect.verticalNormalizedPosition = v;
             },
             endValue, duration);
     }
