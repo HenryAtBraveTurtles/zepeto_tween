@@ -45,7 +45,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static ScrollRectHorizontalNormalizedPosition(scrollRect: ScrollRect, endValue: number, duration: number) {
+    public static ScrollRectHorizontalNormalizedPositionTo(scrollRect: ScrollRect, endValue: number, duration: number) {
         return ZTween.To(
             () => scrollRect.horizontalNormalizedPosition,
             (v: number) => {
@@ -54,7 +54,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static ScrollRectVerticalNormalizedPosition(scrollRect: ScrollRect, endValue: number, duration: number) {
+    public static ScrollRectVerticalNormalizedPositionTo(scrollRect: ScrollRect, endValue: number, duration: number) {
         return ZTween.To(
             () => scrollRect.verticalNormalizedPosition,
             (v: number) => {
