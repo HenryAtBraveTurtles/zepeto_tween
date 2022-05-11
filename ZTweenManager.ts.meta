@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 210e5dabee4f0426f9927155985b4733
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZTweener_1 = require(\"./ZTweener\");\r\nclass ZTweenManager
+    {\r\n    static GetTweener() {\r\n        let t = null;\r\n        if (this.tweenPool.length
+    > 0) {\r\n            t = this.tweenPool.pop();\r\n        }\r\n        else
+    {\r\n            t = new ZTweener_1.default();\r\n        }\r\n        ZTweenManager.AddActiveTween(t);\r\n       
+    return t;\r\n    }\r\n    static AddActiveTween(t) {\r\n        t.active = true;\r\n       
+    t.activeId = ZTweenManager.activeTweens.length;\r\n        ZTweenManager.activeTweens.push(t);\r\n   
+    }\r\n    static RemoveActiveTween(t) {\r\n        const index = this.activeTweens.indexOf(t);\r\n       
+    if (index > -1) {\r\n            this.activeTweens.splice(index, 1);\r\n       
+    }\r\n        this.tweenPool.push(t);\r\n    }\r\n    static Update(deltaTime)
+    {\r\n        const activeTweens = [...ZTweenManager.activeTweens];\r\n       
+    for (const t of activeTweens) {\r\n            t.Update(deltaTime);\r\n           
+    if (!t.active) {\r\n                ZTweenManager.RemoveActiveTween(t);\r\n           
+    }\r\n        }\r\n    }\r\n}\r\nexports.default = ZTweenManager;\r\nZTweenManager.activeTweens
+    = [];\r\nZTweenManager.tweenPool = [];\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiWlR3ZWVuTWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlpUd2Vlbk1hbmFnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFDQSx5Q0FBa0M7QUFFbEMsTUFBcUIsYUFBYTtJQUl2QixNQUFNLENBQUMsVUFBVTtRQUNwQixJQUFJLENBQUMsR0FBYSxJQUFJLENBQUM7UUFDdkIsSUFBSSxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQU0sR0FBRyxDQUFDLEVBQUU7WUFDM0IsQ0FBQyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsR0FBRyxFQUFFLENBQUM7U0FDNUI7YUFDSTtZQUNELENBQUMsR0FBRyxJQUFJLGtCQUFRLEVBQUUsQ0FBQztTQUN0QjtRQUNELGFBQWEsQ0FBQyxjQUFjLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDaEMsT0FBTyxDQUFDLENBQUM7SUFDYixDQUFDO0lBRU8sTUFBTSxDQUFDLGNBQWMsQ0FBQyxDQUFXO1FBQ3JDLENBQUMsQ0FBQyxNQUFNLEdBQUcsSUFBSSxDQUFDO1FBQ2hCLENBQUMsQ0FBQyxRQUFRLEdBQUcsYUFBYSxDQUFDLFlBQVksQ0FBQyxNQUFNLENBQUM7UUFFL0MsYUFBYSxDQUFDLFlBQVksQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDdkMsQ0FBQztJQUVPLE1BQU0sQ0FBQyxpQkFBaUIsQ0FBQyxDQUFXO1FBQ3hDLE1BQU0sS0FBSyxHQUFHLElBQUksQ0FBQyxZQUFZLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBQzNDLElBQUksS0FBSyxHQUFHLENBQUMsQ0FBQyxFQUFFO1lBQ1osSUFBSSxDQUFDLFlBQVksQ0FBQyxNQUFNLENBQUMsS0FBSyxFQUFFLENBQUMsQ0FBQyxDQUFDO1NBQ3RDO1FBQ0QsSUFBSSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDM0IsQ0FBQztJQUVNLE1BQU0sQ0FBQyxNQUFNLENBQUMsU0FBaUI7UUFDbEMsTUFBTSxZQUFZLEdBQUcsQ0FBQyxHQUFHLGFBQWEsQ0FBQyxZQUFZLENBQUMsQ0FBQztRQUNyRCxLQUFLLE1BQU0sQ0FBQyxJQUFJLFlBQVksRUFBRTtZQUMxQixDQUFDLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxDQUFDO1lBQ3BCLElBQUksQ0FBQyxDQUFDLENBQUMsTUFBTSxFQUFFO2dCQUNYLGFBQWEsQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDLENBQUMsQ0FBQzthQUN0QztTQUNKO0lBQ0wsQ0FBQzs7QUF2Q0wsZ0NBd0NDO0FBdkNrQiwwQkFBWSxHQUFlLEVBQUUsQ0FBQztBQUM5Qix1QkFBUyxHQUFlLEVBQUUsQ0FBQyJ9","assetPath":"Assets/zepeto_tween/ZTweenManager.ts","manifest":{"properties":[],"name":"ZTweenManager","description":""},"isCompiled":true}'
+  typescriptHash: 4ee6d22c18488fb14c225068ea578ec2

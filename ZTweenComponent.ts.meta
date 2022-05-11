@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 6aae5063022b34ccdafb3f9207834273
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst ZTween_1 = require(\"./ZTween\");\r\nconst
+    ZTweenManager_1 = require(\"./ZTweenManager\");\r\nclass ZTweenComponent extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Update() {\r\n        ZTweenManager_1.default.Update(UnityEngine_1.Time.deltaTime);\r\n   
+    }\r\n    static Create() {\r\n        if (ZTween_1.default.instance != null)
+    {\r\n            return;\r\n        }\r\n        const gameObject = new UnityEngine_1.GameObject(\"[ZTween]\");\r\n       
+    UnityEngine_1.GameObject.DontDestroyOnLoad(gameObject);\r\n        ZTween_1.default.instance
+    = gameObject.AddComponent($typeof(ZTweenComponent));\r\n    }\r\n    static DestroyInstance()
+    {\r\n        if (ZTween_1.default.instance != null) {\r\n            UnityEngine_1.GameObject.Destroy(ZTween_1.default.instance.gameObject);\r\n           
+    ZTween_1.default.instance = null;\r\n        }\r\n    }\r\n}\r\nexports.default
+    = ZTweenComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiWlR3ZWVuQ29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiWlR3ZWVuQ29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQStDO0FBQy9DLGlEQUFxRDtBQUNyRCxxQ0FBNkI7QUFDN0IsbURBQTRDO0FBRTVDLE1BQXFCLGVBQWdCLFNBQVEscUNBQXFCO0lBRTlELE1BQU07UUFDRix1QkFBYSxDQUFDLE1BQU0sQ0FBQyxrQkFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDO0lBQ3pDLENBQUM7SUFFTSxNQUFNLENBQUMsTUFBTTtRQUNoQixJQUFJLGdCQUFNLENBQUMsUUFBUSxJQUFJLElBQUksRUFBRTtZQUN6QixPQUFPO1NBQ1Y7UUFFRCxNQUFNLFVBQVUsR0FBRyxJQUFJLHdCQUFVLENBQUMsVUFBVSxDQUFDLENBQUM7UUFDOUMsd0JBQVUsQ0FBQyxpQkFBaUIsQ0FBQyxVQUFVLENBQUMsQ0FBQztRQUN6QyxnQkFBTSxDQUFDLFFBQVEsR0FBRyxVQUFVLENBQUMsWUFBWSxTQUFDLGVBQWUsRUFBRyxDQUFDO0lBQ2pFLENBQUM7SUFFTSxNQUFNLENBQUMsZUFBZTtRQUN6QixJQUFJLGdCQUFNLENBQUMsUUFBUSxJQUFJLElBQUksRUFBRTtZQUN6Qix3QkFBVSxDQUFDLE9BQU8sQ0FBQyxnQkFBTSxDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsQ0FBQztZQUMvQyxnQkFBTSxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUM7U0FDMUI7SUFDTCxDQUFDO0NBQ0o7QUF0QkQsa0NBc0JDIn0=","assetPath":"Assets/zepeto_tween/ZTweenComponent.ts","manifest":{"properties":[],"name":"ZTweenComponent","description":""},"isCompiled":true}'
+  typescriptHash: 1b98e56d6c4d616ca0d589a480df110d
