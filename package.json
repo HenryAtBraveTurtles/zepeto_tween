@@ -16,5 +16,10 @@
         "name": "Brave Turtles",
         "email": "henry@braveturtles.com",
         "url": "https://www.braveturtles.com"
-    }
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "/dist"
+    ]
 }
