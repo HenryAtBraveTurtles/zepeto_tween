@@ -1,5 +1,5 @@
-import { Application, Transform, Vector3 } from "UnityEngine";
-import { ScrollRect } from "UnityEngine.UI";
+import { Color, Material, Transform, Vector3 } from "UnityEngine";
+import { Image, ScrollRect } from "UnityEngine.UI";
 import ZTweenComponent from "./ZTweenComponent";
 import ZTweenManager from "./ZTweenManager";
 
@@ -59,6 +59,24 @@ export default class ZTween {
             () => scrollRect.verticalNormalizedPosition,
             (v: number) => {
                 scrollRect.verticalNormalizedPosition = v;
+            },
+            endValue, duration);
+    }
+
+    public static MaterialColorTo(material: Material, endValue: Color, duration: number) {
+        return ZTween.To(
+            () => material.color,
+            (v: Color) => {
+                material.color = v;
+            },
+            endValue, duration);
+    }
+
+    public static ImageColorTo(image: Image, endValue: Color, duration: number) {
+        return ZTween.To(
+            () => image.color,
+            (v: Color) => {
+                image.color = v;
             },
             endValue, duration);
     }

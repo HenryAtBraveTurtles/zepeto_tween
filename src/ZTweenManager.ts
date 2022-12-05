@@ -35,6 +35,9 @@ export default class ZTweenManager {
     public static Update(deltaTime: number) {
         const activeTweens = [...ZTweenManager.activeTweens];
         for (const t of activeTweens) {
+            if (!t.active) {
+                ZTweenManager.RemoveActiveTween(t);
+            }
             t.Update(deltaTime);
             if (!t.active) {
                 ZTweenManager.RemoveActiveTween(t);

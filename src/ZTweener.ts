@@ -1,4 +1,4 @@
-import { Vector3 } from "UnityEngine";
+import { Color, Vector3 } from "UnityEngine";
 import EaseManager, { Ease } from "./EaseManager";
 
 export default class ZTweener {
@@ -34,13 +34,20 @@ export default class ZTweener {
         this.startUpDone = false;
         this.onStart = null;
         this.onComplete = null;
+    }
 
+    public SetEase(easeType:Ease) {
+        this.easeType = easeType;
     }
 
     public Update(deltaTime: number) {
         let toPosition = this.position;
         toPosition += deltaTime;
         this.GoTo(toPosition);
+    }
+
+    public Stop() {
+        this.active = false;
     }
 
     private GoTo(toPosition: number) {
@@ -78,6 +85,10 @@ export default class ZTweener {
             newValue = Vector3.op_Addition(this.startValue as Vector3, Vector3.op_Multiply(this.changeValue, t));
             //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${this.position}, ${this.duration} ${newValue.ToString()}`);
         }
+        else if (this.startValue instanceof Color) {
+            newValue = Color.Lerp(this.startValue as Color, this.changeValue as Color, t);
+            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${this.position}, ${this.duration} ${newValue.ToString()}`);
+        }
         else {
             newValue = this.startValue + this.changeValue * t;
             //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${this.position}, ${this.duration} ${newValue}`);
@@ -90,6 +101,10 @@ export default class ZTweener {
         this.startValue = this.getter();
         if (this.endValue instanceof Vector3) {
             this.changeValue = Vector3.op_Subtraction(this.endValue as Vector3, this.startValue as Vector3);
+            //console.log(`[ZTweener:StartUp][${this.activeId}] ${this.startValue.ToString()}, ${this.changeValue.ToString()}`);
+        }
+        if (this.endValue instanceof Color) {
+            this.changeValue = this.endValue;
             //console.log(`[ZTweener:StartUp][${this.activeId}] ${this.startValue.ToString()}, ${this.changeValue.ToString()}`);
         }
         else {
