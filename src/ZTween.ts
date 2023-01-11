@@ -1,4 +1,4 @@
-import { Color, Material, Transform, Vector3 } from "UnityEngine";
+import { Application, CanvasGroup, Color, Material, Transform, Vector3 } from "UnityEngine";
 import { Image, ScrollRect } from "UnityEngine.UI";
 import ZTweenComponent from "./ZTweenComponent";
 import ZTweenManager from "./ZTweenManager";
@@ -20,7 +20,7 @@ export default class ZTween {
         ZTween.Init();
     }
 
-    public static To(getter, setter, endValue, duration: number) {
+    public static To<T>(getter:() => T, setter:(v:T) => void, endValue:T, duration: number) {
         ZTween.InitCheck();
         const t = ZTweenManager.GetTweener();
         t.SetUp(getter, setter, endValue, duration);
@@ -41,6 +41,15 @@ export default class ZTween {
             () => transform.localPosition,
             (v: Vector3) => {
                 transform.localPosition = v;
+            },
+            endValue, duration);
+    }
+
+    public static TransfomLocalScaleTo(transform: Transform, endValue: Vector3, duration: number) {
+        return ZTween.To(
+            () => transform.localScale,
+            (v: Vector3) => {
+                transform.localScale = v;
             },
             endValue, duration);
     }
@@ -77,6 +86,15 @@ export default class ZTween {
             () => image.color,
             (v: Color) => {
                 image.color = v;
+            },
+            endValue, duration);
+    }
+
+    public static CanvasGroupAlphaTo(canvasGroup: CanvasGroup, endValue: number, duration: number) {
+        return ZTween.To(
+            () => canvasGroup.alpha,
+            (v: number) => {
+                canvasGroup.alpha = v;
             },
             endValue, duration);
     }

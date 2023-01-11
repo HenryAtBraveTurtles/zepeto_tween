@@ -1,5 +1,6 @@
 import { Color, Vector3 } from "UnityEngine";
 import EaseManager, { Ease } from "./EaseManager";
+import ZTweenManager from "./ZTweenManager";
 
 export default class ZTweener {
     public active: boolean = false;
@@ -27,8 +28,6 @@ export default class ZTweener {
         this.endValue = endValue;
         this.duration = duration;
 
-        this.startValue = 0;
-        this.changeValue = 0;
         this.position = 0;
         this.easeType = Ease.Linear;
         this.startUpDone = false;
@@ -38,6 +37,14 @@ export default class ZTweener {
 
     public SetEase(easeType:Ease) {
         this.easeType = easeType;
+    }
+
+    public SetOnComplete(onComplete:any) {
+        this.onComplete = onComplete;
+    }
+
+    public SetOnStart(onStart: any) {
+        this.onStart = onStart;
     }
 
     public Update(deltaTime: number) {
@@ -103,7 +110,7 @@ export default class ZTweener {
             this.changeValue = Vector3.op_Subtraction(this.endValue as Vector3, this.startValue as Vector3);
             //console.log(`[ZTweener:StartUp][${this.activeId}] ${this.startValue.ToString()}, ${this.changeValue.ToString()}`);
         }
-        if (this.endValue instanceof Color) {
+        else if (this.endValue instanceof Color) {
             this.changeValue = this.endValue;
             //console.log(`[ZTweener:StartUp][${this.activeId}] ${this.startValue.ToString()}, ${this.changeValue.ToString()}`);
         }
