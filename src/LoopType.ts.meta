@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 6731e0e4ceab04244bebc898a2fe2b9f
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nexports.LoopType = void 0;\r\nvar LoopType;\r\n(function
+    (LoopType) {\r\n    LoopType[LoopType[\"Restart\"] = 0] = \"Restart\";\r\n   
+    LoopType[LoopType[\"Yoyo\"] = 1] = \"Yoyo\";\r\n})(LoopType = exports.LoopType
+    || (exports.LoopType = {}));\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTG9vcFR5cGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMb29wVHlwZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFDQSxJQUFZLFFBR1g7QUFIRCxXQUFZLFFBQVE7SUFDaEIsNkNBQU8sQ0FBQTtJQUNQLHVDQUFJLENBQUE7QUFDUixDQUFDLEVBSFcsUUFBUSxHQUFSLGdCQUFRLEtBQVIsZ0JBQVEsUUFHbkIifQ==","assetPath":"Assets/zepeto_tween/src/LoopType.ts","manifest":{"properties":[],"name":"LoopType","description":""},"isCompiled":true}'
+  typescriptHash: 5488f0218cf4a96b2e45fc249c05cbdd

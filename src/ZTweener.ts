@@ -1,6 +1,6 @@
 import { Color, Vector3 } from "UnityEngine";
 import EaseManager, { Ease } from "./EaseManager";
-import ZTweenManager from "./ZTweenManager";
+import { LoopType } from './LoopType'
 
 export default class ZTweener {
     public active: boolean = false;
@@ -17,6 +17,9 @@ export default class ZTweener {
     public onComplete;
 
     public easeType: Ease = Ease.Linear;
+    public loopType: LoopType = LoopType.Restart;
+    private positionMovingBackward: boolean = false;
+    private loopCountLeft: number = 1;
 
     public duration: number = 0;
 
@@ -33,18 +36,29 @@ export default class ZTweener {
         this.startUpDone = false;
         this.onStart = null;
         this.onComplete = null;
+        this.positionMovingBackward = false;
+        this.loopCountLeft = 1
     }
 
-    public SetEase(easeType:Ease) {
+    public SetEase(easeType:Ease):ZTweener {
         this.easeType = easeType;
+        return this;
     }
 
-    public SetOnComplete(onComplete:any) {
+    public SetLoops(loopCount: number, loopType: LoopType): ZTweener {
+        this.loopCountLeft = loopCount;
+        this.loopType = loopType;
+        return this;
+    }
+
+    public SetOnComplete(onComplete: any): ZTweener {
         this.onComplete = onComplete;
+        return this;
     }
 
-    public SetOnStart(onStart: any) {
+    public SetOnStart(onStart: any): ZTweener {
         this.onStart = onStart;
+        return this;
     }
 
     public Update(deltaTime: number) {
@@ -62,10 +76,18 @@ export default class ZTweener {
             this.StartUp();
         }
 
-        const prevPostion = this.position;
         this.position = toPosition;
         if (this.position >= this.duration) {
-            this.Complete();
+            this.loopCountLeft -= 1;
+            if (this.loopCountLeft == 0) {
+                this.Complete();
+            }
+            else {
+                if (this.loopType == LoopType.Yoyo) {
+                    this.positionMovingBackward = !this.positionMovingBackward;
+                }
+                this.GoTo(this.position - this.duration);
+            }
             return;
         }
         else if (this.position < 0) {
@@ -86,19 +108,20 @@ export default class ZTweener {
     }
 
     private EvaluateAndApply() {
-        const t = EaseManager.Evaluate(this.easeType, this.position, this.duration);
-        let newValue;
+        const position = this.positionMovingBackward ? this.duration - this.position : this.position;
+        const t = EaseManager.Evaluate(this.easeType, position, this.duration);
+        let newValue:any = null;
         if (this.startValue instanceof Vector3) {
             newValue = Vector3.op_Addition(this.startValue as Vector3, Vector3.op_Multiply(this.changeValue, t));
-            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${this.position}, ${this.duration} ${newValue.ToString()}`);
+            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${position}, ${this.duration} ${newValue.ToString()}`);
         }
         else if (this.startValue instanceof Color) {
             newValue = Color.Lerp(this.startValue as Color, this.changeValue as Color, t);
-            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${this.position}, ${this.duration} ${newValue.ToString()}`);
+            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${position}, ${this.duration} ${newValue.ToString()}`);
         }
         else {
             newValue = this.startValue + this.changeValue * t;
-            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${this.position}, ${this.duration} ${newValue}`);
+            //console.log(`[ZTweener:EvaluateAndApply][${this.activeId}] ${position}, ${this.duration} ${newValue}`);
         }
         this.setter(newValue);
     }

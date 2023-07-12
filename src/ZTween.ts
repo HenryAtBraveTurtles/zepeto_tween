@@ -1,7 +1,8 @@
-import { Application, CanvasGroup, Color, Material, Transform, Vector3 } from "UnityEngine";
+import { CanvasGroup, Color, Material, Transform, Vector3 } from "UnityEngine";
 import { Image, ScrollRect } from "UnityEngine.UI";
 import ZTweenComponent from "./ZTweenComponent";
 import ZTweenManager from "./ZTweenManager";
+import ZTweener from "./ZTweener";
 
 export default class ZTween {
     public static instance: ZTweenComponent = null;
@@ -20,14 +21,14 @@ export default class ZTween {
         ZTween.Init();
     }
 
-    public static To<T>(getter:() => T, setter:(v:T) => void, endValue:T, duration: number) {
+    public static To<T>(getter:() => T, setter:(v:T) => void, endValue:T, duration: number):ZTweener {
         ZTween.InitCheck();
         const t = ZTweenManager.GetTweener();
         t.SetUp(getter, setter, endValue, duration);
         return t;
     }
 
-    public static TransfomMoveTo(transform: Transform, endValue: Vector3, duration: number) {
+    public static TransfomMoveTo(transform: Transform, endValue: Vector3, duration: number): ZTweener {
         return ZTween.To(
             () => transform.position,
             (v: Vector3) => {
@@ -36,7 +37,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static TransfomLocalMoveTo(transform: Transform, endValue: Vector3, duration: number) {
+    public static TransfomLocalMoveTo(transform: Transform, endValue: Vector3, duration: number): ZTweener {
         return ZTween.To(
             () => transform.localPosition,
             (v: Vector3) => {
@@ -45,7 +46,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static TransfomLocalScaleTo(transform: Transform, endValue: Vector3, duration: number) {
+    public static TransfomLocalScaleTo(transform: Transform, endValue: Vector3, duration: number): ZTweener {
         return ZTween.To(
             () => transform.localScale,
             (v: Vector3) => {
@@ -54,7 +55,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static ScrollRectHorizontalNormalizedPositionTo(scrollRect: ScrollRect, endValue: number, duration: number) {
+    public static ScrollRectHorizontalNormalizedPositionTo(scrollRect: ScrollRect, endValue: number, duration: number): ZTweener {
         return ZTween.To(
             () => scrollRect.horizontalNormalizedPosition,
             (v: number) => {
@@ -63,7 +64,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static ScrollRectVerticalNormalizedPositionTo(scrollRect: ScrollRect, endValue: number, duration: number) {
+    public static ScrollRectVerticalNormalizedPositionTo(scrollRect: ScrollRect, endValue: number, duration: number): ZTweener {
         return ZTween.To(
             () => scrollRect.verticalNormalizedPosition,
             (v: number) => {
@@ -72,7 +73,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static MaterialColorTo(material: Material, endValue: Color, duration: number) {
+    public static MaterialColorTo(material: Material, endValue: Color, duration: number): ZTweener {
         return ZTween.To(
             () => material.color,
             (v: Color) => {
@@ -81,7 +82,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static ImageColorTo(image: Image, endValue: Color, duration: number) {
+    public static ImageColorTo(image: Image, endValue: Color, duration: number): ZTweener {
         return ZTween.To(
             () => image.color,
             (v: Color) => {
@@ -90,7 +91,7 @@ export default class ZTween {
             endValue, duration);
     }
 
-    public static CanvasGroupAlphaTo(canvasGroup: CanvasGroup, endValue: number, duration: number) {
+    public static CanvasGroupAlphaTo(canvasGroup: CanvasGroup, endValue: number, duration: number): ZTweener {
         return ZTween.To(
             () => canvasGroup.alpha,
             (v: number) => {
